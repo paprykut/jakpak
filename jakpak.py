@@ -3,7 +3,6 @@
 """
 Description: Retrieve package info from Arch Rollback Machine as of a given
              date and compare the differences with your local packages.
-
 Author: Mikołaj Romel
 License: MIT
 (C) 2014
@@ -50,7 +49,7 @@ def _parse_cmdline():
                         community-staging, community-testing, core, extra, \
                         gnome-unstable, kde-unstable, multilib, \
                         multilib-staging, multilib-testing, pool, staging, \
-                        testing, lastsync, lastupdate',
+                        testing, lastsync, lastupdate]',
                         required=True, type=str)
 
     cmdline_args = parser.parse_args()
@@ -148,8 +147,8 @@ def _validate_date(date_string):
         if datetime.strptime(date_string, '%d-%m-%Y'):
             return date_string
     except ValueError:
-        raise ArgumentTypeError("invalid date format: '%s'." % date_string +
-                                " Please use the format of: DD-MM-YYYY.")
+        raise ArgumentTypeError("invalid date format: '%s'. " % date_string +
+                                "Please use the format of: DD-MM-YYYY.")
 
 
 def _compare_pkgs(local_pkgs, repo_pkgs):
